@@ -13,6 +13,9 @@ class UrlMappings {
         "/admin/addBook"(controller: "admin", action: "addBook")
         "/admin/listUsers"(controller: "admin", action: "listUsers")
         "/admin/listBooks"(controller: "admin", action: "listBooks")
+        //User Routes
+        "/User"(controller: "user", action: "index")
+        "/User/viewBooks"(controller: "user", action: "viewBooks")
         "500"(view:'/error')
         "404"(view:'/notFound')
 

@@ -1,13 +1,12 @@
 package BookStoreBackend
 
-
-
-
 class AdminController {
   AdminService adminService
+
 def index(){
     render(view: "/admin/index")
-}
+   }
+
     def addUser(){
 
             def firstName = request.getParameter("firstName")
@@ -29,8 +28,6 @@ def index(){
             render(view: '/admin/addUser')
         }
     }
-
-
 
     def addBook() {
         def bookName = request.getParameter("bookName")

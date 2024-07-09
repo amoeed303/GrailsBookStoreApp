@@ -4,8 +4,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class AdminService {
 
-     def addUser(String firstName=" ", String lastName=" ", String email="amoeed303@gmail.com", String phone=" ",  String password=" ") {
-         print("user data: $firstName $lastName $email $phone $password")
+     def addUser(String firstName=" ", String lastName=" ", String email="test@gmail.com", String phone=" ",  String password=" ") {
          try{
              log.info("Adding user: $firstName $lastName $email $phone $password")
              new User(firstName: firstName, lastName: lastName, email: email, phone: phone, password: password).save(flush: true, failOnError: true);

@@ -4,8 +4,8 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class UserService {
 
-     def listBooks() {
-        Book.findAll()
+     def getAllBooks() {
+        return Book.list();
     }
 
     def buyBook(User user, Long bookId) {
@@ -23,6 +23,28 @@ class UserService {
             Purchase.findAllByUser(user).collect { it.book }
         } else {
             []
+        }
+    }
+    def getUserByEmail(String email=" ") {
+        if (!email.trim()) {
+            log.error("Email parameter is empty or null.")
+            throw new IllegalArgumentException("Email parameter cannot be empty or null.")
+        }
+
+        log.info("Attempting to find user by email: $email")
+
+        try {
+            User user = User.findByEmail(email: email.trim())
+            log.info("User findByEmail result: $user")
+            if (user) {
+                return user
+            } else {
+                log.warn("No user found with email: $email")
+                return null
+            }
+        } catch (Exception e) {
+            log.error("Error getting user by email: ${e.message}", e)
+            throw new Exception("Error getting user by email: ${e.message}")
         }
     }
 }

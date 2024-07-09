@@ -2,6 +2,7 @@ package BookStoreBackend
 
 
 class LoginController {
+    UserService userService
 
     def index() {
 render(view: "/login/login")
@@ -22,8 +23,10 @@ render(view: "/login/login")
                     redirect(action: "index")
                 }
             } else {
-                User user = User.findByEmailAndPassword(email, password)
-                if (user) {
+                User user = userService.getUserByEmail(email)
+
+                if (user && user.email==email && user.password==password) {
+
                     session.user = user
                     redirect(controller: "user", action: "index")
                 } else {

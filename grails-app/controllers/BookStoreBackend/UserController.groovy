@@ -4,25 +4,10 @@ import grails.converters.JSON
 class UserController {
 
    UserService userService
- def login() {
-        def params = request.JSON
-     boolean  isAdmin=params.isAdmin?:false
-     if(isAdmin){
-         if(params.email=="admin" && params.password=="admin123"){
-             render status: 200, text: 'Admin.gsp Login successful'
-     }else{
-            render status: 401, text: 'Admin.gsp Login failed'
-         }
-         }
-     else {
-         User user = User.findByEmailAndPassword(params.email, params.password)
-         if (user) {
-             render status: 200, text: 'User Login successful'
-         } else {
-             render status: 401, text: 'Login failed'
-         }
-     }
-    }
+
+def index(){
+    render(view: "/User/index")
+}
 
     def changePassword() {
         def params = request.JSON
@@ -36,7 +21,8 @@ class UserController {
         }
     }
     def viewBooks() {
-        render userService.listBooks() as JSON
+       def books = userService.getAllBooks()
+        render (view: '/User/viewBooks', model: [books: books])
     }
 
     def buyBook() {
