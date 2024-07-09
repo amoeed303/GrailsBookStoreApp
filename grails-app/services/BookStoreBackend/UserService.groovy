@@ -1,10 +1,11 @@
 package BookStoreBackend
 
 import grails.gorm.transactions.Transactional
+
 @Transactional
 class UserService {
 
-     def getAllBooks() {
+    def getAllBooks() {
         return Book.list();
     }
 
@@ -12,8 +13,8 @@ class UserService {
         Book book = Book.get(bookId)
         if (book) {
             new Purchase(user: user, book: book, purchaseDate: new Date()).save(flush: true)
-        }else{
-            throw  new RuntimeException("Book not found")
+        } else {
+            throw new RuntimeException("Book not found")
         }
     }
 
@@ -25,16 +26,16 @@ class UserService {
             []
         }
     }
-    def getUserByEmail(String email=" ") {
+
+    def getUserByEmail(String email = " ") {
         if (!email.trim()) {
             log.error("Email parameter is empty or null.")
             throw new IllegalArgumentException("Email parameter cannot be empty or null.")
         }
 
-        log.info("Attempting to find user by email: $email")
-
+        println("Attempting to find user by email: $email")
         try {
-            User user = User.findByEmail(email: email.trim())
+            User user = User.findByEmail(email)
             log.info("User findByEmail result: $user")
             if (user) {
                 return user
