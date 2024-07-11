@@ -1,13 +1,15 @@
 package BookStoreBackend
+
 import grails.converters.JSON
 
 class UserController {
 
-   UserService userService
+    UserService userService
 
-def index(){
-    render(view: "/User/index")
-}
+    def index() {
+        def books = userService.getAllBooks()
+        render(view: '/User/viewBooks', model: [books: books])
+    }
 
     def changePassword() {
         def params = request.JSON
@@ -20,20 +22,26 @@ def index(){
             render status: 404, text: 'User not found'
         }
     }
-    def viewBooks() {
-       def books = userService.getAllBooks()
-        render (view: '/User/viewBooks', model: [books: books])
-    }
+
 
     def buyBook() {
-        def params = request.JSON
-        User user = User.findByEmail(params.email)
+        String email = params.email
+        Long bookId = params.bookId as Long
+        User user = userService.getUserByEmail(email)
         if (user) {
-            userService.buyBook(user, params.bookId)
-            render status: 200, text: 'Book purchased'
+            userService.buyBook(user, bookId)
+            flash.message = 'Book purchased successfully'
+            flash.type = 'success'
+            session.flashDisplayed = false
+            redirect(action: "index")
+
         } else {
-            render status: 404, text: 'User not found'
+            flash.message = 'User not found unable to but book'
+            flash.type='error'
+            flash.type = 'success'
+            redirect(action: "index")
         }
+
     }
 
     def purchasedBooks() {

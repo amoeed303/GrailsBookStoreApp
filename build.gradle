@@ -40,8 +40,10 @@ dependencies {
     implementation("org.grails.plugins:gsp")
     implementation("org.grails.plugins:hibernate5")
     implementation("org.grails.plugins:scaffolding")
+    implementation("org.grails.plugins:mail:4.0.0")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation ("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-logging")
     implementation("org.springframework.boot:spring-boot-starter-tomcat")
@@ -51,6 +53,7 @@ dependencies {
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("com.mysql:mysql-connector-j:8.0.31")
+
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
     runtimeOnly("org.fusesource.jansi:jansi:1.18")
     testImplementation("io.micronaut:micronaut-inject-groovy")

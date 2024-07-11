@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<h2>Welcome to Admin Panel</h2>
+<h2>Welcome to Admin Panel ${session.adminName}</h2>
 <ul>
     <li><g:link controller="admin" action="addUser">Add User</g:link></li>
     <li><g:link controller="admin" action="listUsers">List Users</g:link></li>

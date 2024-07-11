@@ -27,18 +27,19 @@ class UserService {
         }
     }
 
+
     def getUserByEmail(String email = " ") {
         if (!email.trim()) {
             log.error("Email parameter is empty or null.")
             throw new IllegalArgumentException("Email parameter cannot be empty or null.")
         }
 
-        println("Attempting to find user by email: $email")
         try {
             User user = User.findByEmail(email)
             log.info("User findByEmail result: $user")
             if (user) {
                 return user
+
             } else {
                 log.warn("No user found with email: $email")
                 return null
