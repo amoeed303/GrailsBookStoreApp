@@ -41,6 +41,7 @@ dependencies {
     implementation("org.grails.plugins:hibernate5")
     implementation("org.grails.plugins:scaffolding")
     implementation("org.grails.plugins:mail:4.0.0")
+    implementation("org.grails.plugins:quartz:3.0.0")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation ("org.springframework.boot:spring-boot-starter-mail")

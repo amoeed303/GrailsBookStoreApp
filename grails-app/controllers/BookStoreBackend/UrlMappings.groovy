@@ -16,6 +16,7 @@ class UrlMappings {
         //User Routes
         "/books"(controller: "user", action: "index")
         "/books/buyBook"(controller: "user", action: "buyBook")
+        "/books/purchasedBooks"(controller: "user", action: "purchasedBooks")
         //General Routes Error and information Routes
         "500"(view:'/error')
         "404"(view:'/notFound')

@@ -7,7 +7,7 @@ class Book {
 
     static constraints = {
 
-        bookName nullable: true, blank: false
+        bookName nullable: true, blank: false,unique: true
         bookAuthor nullable: true, blank: false
 
     }

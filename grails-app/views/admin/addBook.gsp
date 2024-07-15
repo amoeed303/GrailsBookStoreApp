@@ -49,10 +49,15 @@
         background-color: #0056b3;
     }
     </style>
+    <script>
+        function resetForm() {
+            document.getElementById("addBookForm").reset();
+        }
+    </script>
 </head>
 <body>
 <h2>Add Book</h2>
-<form action="${createLink(controller: 'admin', action: 'addBook')}" method="post" content="json">
+<form id="addBookForm" action="${createLink(controller: 'admin', action: 'addBook')}" method="post" content="json">
     <label>Book Name:</label>
     <input type="text" name="bookName" required />
     <br/>

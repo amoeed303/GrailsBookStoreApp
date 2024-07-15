@@ -100,7 +100,10 @@
 <body>
 <h2>Available Books</h2>
 <div>
-    <a  class="purchase-button" href="${createLink(controller: 'login', action: 'logout')}">Purchased Books</a>
+    <form action="${createLink(controller: 'user', action: 'purchasedBooks')}">
+        <g:hiddenField name="email" value="${session.userEmail}"/>
+        <button class="purchase-button" type="submit">View Purchased Books</button>
+    </form>
 </div>
 <div>
     <a  class="logout-button" href="${createLink(controller: 'login', action: 'logout')}">Logout</a>

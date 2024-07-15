@@ -1,6 +1,5 @@
 package BookStoreBackend
 
-
 class LoginController {
     UserService userService
     Admin admin = new Admin()
@@ -13,10 +12,8 @@ class LoginController {
         String email = request.getParameter("email")
         String password = request.getParameter("password")
         boolean isAdmin = request.getParameter("isAdmin") ? Boolean.valueOf(request.getParameter("isAdmin")) : false
-        println(isAdmin)
-
         if (isAdmin) {
-            if (email == admin.email && password ==admin.password) {
+            if (email == admin.email && password == admin.password) {
                 session.isAdmin = true
                 session.adminName = admin.name
                 redirect(controller: "admin", action: "index")
@@ -25,7 +22,6 @@ class LoginController {
                 redirect(action: "index")
             }
         } else {
-
             User user = userService.getUserByEmail(email)
             if (user && user.email == email && user.password == password) {
                 session.user = user

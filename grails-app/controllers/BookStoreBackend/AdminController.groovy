@@ -21,14 +21,10 @@ class AdminController {
             try {
                 adminService.addUser(firstName, lastName, email, phone, password)
                 flash.message = "User added successfully."
-                //send email to newly created user with login credentials
-                //to be sent
-                //email and password
-                //app password :https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4OOWj0KAyfpqRfRkR-X8U2wI9YI0x7s1lTGq5L_5bjftF1PtXmFpMCtGLHrmNeP1s35NwXFIj31W0-zsodiHbAG_5szI-Oyy6KI4vJtWBE_01Y1o6M
                 mailService.sendMail {
                     to email
                     subject "Successful Account Creation"
-                    body "Your account has been created successfully with email: $email and password: $password"
+                    body "Your account has been created successfully with email: $email and password: $password \nYou can only Login with given crediantials\n regards \n BookStore Team"
                 }
                 redirect(action: 'listUsers')
             } catch (Exception e) {

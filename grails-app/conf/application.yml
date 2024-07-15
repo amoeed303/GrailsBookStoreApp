@@ -4,22 +4,20 @@ info:
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
 grails:
+  plugin:
+    quartz:
+        autoStartup: true
+        jdbcStore: false
   mail:
     host: "smtp.gmail.com"
     port: 465
-    username: "amoeed303@gmail.com"
-    password: "hehe"
+    username: "your email"
+    password: "hehe your password"
     props:
       mail.smtp.auth: "true"
       mail.smtp.socketFactory.port: 465
       mail.smtp.socketFactory.class: "javax.net.ssl.SSLSocketFactory"
       mail.smtp.socketFactory.fallback: "false"
-
-
-
-
-
-
   mime:
     disable:
       accept:
@@ -87,3 +85,4 @@ hibernate:
 
   format_sql: true
   use_sql_comments: true
+

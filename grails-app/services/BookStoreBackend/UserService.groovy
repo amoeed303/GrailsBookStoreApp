@@ -21,12 +21,15 @@ class UserService {
     def getPurchasedBooks(String email) {
         User user = User.findByEmail(email)
         if (user) {
-            Purchase.findAllByUser(user).collect { it.book }
+            def purchases = Purchase.findAllByUser(user)
+            return purchases
         } else {
             []
         }
     }
-
+def getAllUsers() {
+        return User.list()
+    }
 
     def getUserByEmail(String email = " ") {
         if (!email.trim()) {
